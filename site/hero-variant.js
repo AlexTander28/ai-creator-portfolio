@@ -1,12 +1,15 @@
-import {initLiquidHero} from './hero-liquid.js?v=d0544114e2f8';
+import {initLiquidHero} from './hero-liquid.js?v=3a91c3d7bc45';
 
 // Approved for publication; the previous Hero remains available by query.
 const HERO_VARIANT='liquid';
 const requested=new URLSearchParams(location.search).get('heroVariant');
 const variant=['legacy','liquid'].includes(requested)?requested:HERO_VARIANT;
+const tone=new URLSearchParams(location.search).get('heroTone')==='purple'?'purple':'amber';
 const hero=document.querySelector('.hero-intro');
 const media=document.querySelector('#hero-legacy-media');
 document.documentElement.dataset.heroVariant=variant;
+document.documentElement.dataset.heroTone=tone;
+if(tone==='amber')document.querySelectorAll('.site-header a[href="#contact"],.contact-links a').forEach(a=>{a.textContent=a.textContent.replace(/[↗\uFE0F]/g,'').trim();});
 if(variant==='legacy'){
  hero.prepend(media.content.cloneNode(true));
 }else{

@@ -1,7 +1,7 @@
 // A single procedural material; no textures, video, libraries or wheel capture.
 const vertex=`attribute vec2 a;varying vec2 uv;void main(){uv=a*.5+.5;gl_Position=vec4(a,0.,1.);}`;
 const fragment=`precision mediump float;
-varying vec2 uv;uniform vec2 resolution;uniform vec2 mouse;uniform vec2 velocity;uniform float time;uniform float energy;
+varying vec2 uv;uniform vec2 resolution;uniform vec2 mouse;uniform vec2 velocity;uniform float time;uniform float energy;uniform float warm;
 void main(){
  float aspect=resolution.x/resolution.y;
  vec2 p=vec2(uv.x*aspect,uv.y),m=vec2(mouse.x*aspect,mouse.y);
@@ -21,12 +21,12 @@ void main(){
  float edge=exp(-ridge*ridge/(thickness*thickness));
  float gleam=exp(-pow((ridge-.075)*34.,2.));
  float flood=smoothstep(.15,.95,uv.x)*(.55+.45*sin(q.y*2.+t)*sin(q.x*1.7-t));
- vec3 dark=vec3(.013,.008,.07);
- vec3 col=mix(dark,vec3(.16,.015,.72),flood*.85);
- col+=vec3(.12,.012,.56)*broad;
- col+=vec3(.34,.055,.9)*shoulder*.85;
- col+=vec3(.7,.45,1.)*gleam*.38;
- col=mix(col,vec3(.91,.84,1.),edge*.96);
+ vec3 dark=mix(vec3(.013,.008,.07),vec3(.045,.018,.004),warm);
+ vec3 col=mix(dark,mix(vec3(.16,.015,.72),vec3(.58,.19,.012),warm),flood*.85);
+ col+=mix(vec3(.12,.012,.56),vec3(.42,.1,.004),warm)*broad;
+ col+=mix(vec3(.34,.055,.9),vec3(1.,.44,.018),warm)*shoulder*.85;
+ col+=mix(vec3(.7,.45,1.),vec3(1.,.7,.18),warm)*gleam*.38;
+ col=mix(col,mix(vec3(.91,.84,1.),vec3(1.,.93,.65),warm),edge*.96);
  // Keep a quiet reading area, with reflective ribbons strongest near the edges.
  float shade=exp(-pow((uv.x-.43)*2.6,2.)-pow((uv.y-.5)*2.,2.));
  col*=1.-shade*.8;
@@ -53,7 +53,7 @@ export function initLiquidHero(hero){
    if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error('shader link');
    gl.useProgram(program);buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
    const attr=gl.getAttribLocation(program,'a');gl.enableVertexAttribArray(attr);gl.vertexAttribPointer(attr,2,gl.FLOAT,false,0,0);
-   uniforms=Object.fromEntries(['resolution','mouse','velocity','time','energy'].map(k=>[k,gl.getUniformLocation(program,k)]));
+   uniforms=Object.fromEntries(['resolution','mouse','velocity','time','energy','warm'].map(k=>[k,gl.getUniformLocation(program,k)]));
    hero.dataset.renderer='webgl';resize();draw();sync();
   }catch{hero.dataset.renderer='static';gl=null;}
  }
@@ -63,7 +63,7 @@ export function initLiquidHero(hero){
   if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;}
   if(gl&&!lost){gl.viewport(0,0,width,height);if(uniforms)draw();}
  }
- function draw(){if(!gl||lost||!uniforms)return;gl.uniform2f(uniforms.resolution,width,height);gl.uniform2f(uniforms.mouse,pointer.x,pointer.y);gl.uniform2f(uniforms.velocity,pointer.vx,pointer.vy);gl.uniform1f(uniforms.time,time);gl.uniform1f(uniforms.energy,pointer.power);gl.drawArrays(gl.TRIANGLES,0,3);frames++;}
+ function draw(){if(!gl||lost||!uniforms)return;gl.uniform2f(uniforms.resolution,width,height);gl.uniform2f(uniforms.mouse,pointer.x,pointer.y);gl.uniform2f(uniforms.velocity,pointer.vx,pointer.vy);gl.uniform1f(uniforms.time,time);gl.uniform1f(uniforms.energy,pointer.power);gl.uniform1f(uniforms.warm,document.documentElement.dataset.heroTone==='amber'?1:0);gl.drawArrays(gl.TRIANGLES,0,3);frames++;}
  function tick(now){
   frame=0;if(stopped())return;
   const dt=last?Math.min((now-last)/1000,.05):0;last=now;time+=dt;
