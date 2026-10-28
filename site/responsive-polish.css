@@ -1,13 +1,25 @@
 /* Existing identity, reflowed reading order. ?responsive=previous disables this pass. */
 html[data-responsive="polished"] .section-heading>p{line-height:1.6}
+/* Keep supporting copy directly beneath the headline, independent of portrait height. */
+html[data-responsive="polished"] .hero-liquid .intro-line{display:block}
+html[data-responsive="polished"] .hero-liquid .liquid-composition{align-items:start}
+html[data-responsive="polished"] .hero-liquid .liquid-portrait{position:absolute;right:0;top:8px;width:clamp(220px,22vw,320px);grid-area:auto}
+@media(min-width:721px) and (max-width:1250px){html[data-responsive="polished"] .hero-liquid .liquid-portrait{width:clamp(210px,28vw,310px)}}
+html[data-responsive="polished"] .hero-liquid .intro-note{margin-top:26px}
+html[data-responsive="polished"] .hero-liquid .intro-note>p{max-width:42ch}
+html[data-hero-tone="amber"] .liquid-header nav{background:#38230b24;backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);border-color:#ffe5b66b;box-shadow:inset 0 1px 0 #fff5,inset 0 -1px 0 #fff1}
+@supports not (backdrop-filter:blur(1px)){html[data-hero-tone="amber"] .liquid-header nav{background:#271609ed}}
 @media(max-width:720px){
  html[data-responsive="polished"] .figma-featured{grid-template-columns:minmax(0,1fr)}
 }
-@media(max-width:650px){
+@media(max-width:720px){
+ html[data-responsive="polished"] .hero-liquid .hero-content{display:flex;flex-direction:column;gap:0;align-items:stretch}
+ html[data-responsive="polished"] .hero-liquid .intro-line{width:100%;grid-column:auto;align-self:stretch}
  html[data-responsive="polished"] .hero-liquid .hero-content{padding-top:116px}
  html[data-responsive="polished"] .hero-liquid .hero-content{text-align:center}
  html[data-responsive="polished"] .hero-liquid.hero-process-copy h1{text-align:center;align-self:stretch}
  html[data-responsive="polished"] .hero-liquid .intro-note{text-align:center}
+ html[data-responsive="polished"] .hero-liquid .intro-note>p{margin-inline:auto}
  html[data-responsive="polished"] .hero-liquid .intro-note .arrow-link{margin-inline:auto}
  html[data-responsive="polished"] .hero-liquid.hero-process-copy .intro-line{display:flex;flex-direction:column;align-items:stretch;gap:0;padding-bottom:30px}
  html[data-responsive="polished"] .hero-liquid.hero-process-copy .liquid-composition{display:contents!important}
@@ -32,5 +44,30 @@ html[data-responsive="polished"] .section-heading>p{line-height:1.6}
  html[data-responsive="polished"] .contact-intro{font-size:16px;line-height:1.6}
  html[data-responsive="polished"] .figma-context{font-size:13px;line-height:1.55}
  html[data-responsive="polished"] .sites-section .site-showcase{height:clamp(290px,47svh,380px)}
+ html[data-responsive="polished"] main .work-section,html[data-responsive="polished"] .contact,html[data-responsive="polished"] footer{text-align:center}
+ html[data-responsive="polished"] .section-heading{display:flex;flex-direction:column;align-items:center;gap:20px}
+ html[data-responsive="polished"] .section-heading>p{margin:0 auto}
+ html[data-responsive="polished"] .section-heading>div{width:100%}
+ html[data-responsive="polished"] .ui-statement,html[data-responsive="polished"] .work-thumb,html[data-responsive="polished"] .cover-art{text-align:center}
+ html[data-responsive="polished"] .ui-controls,html[data-responsive="polished"] .cover-modes>div{justify-content:center}
+ html[data-responsive="polished"] .ui-stage{display:block;min-height:0}
+ html[data-responsive="polished"] .ui-statement{padding:0}
+ html[data-responsive="polished"] .ui-deck{height:450px;margin-top:28px}
+ html[data-responsive="polished"] .ui-card{height:390px;left:3%;width:79%}
+ html[data-responsive="polished"] .cover-modes{align-items:center;text-align:center}
+ html[data-responsive="polished"] .stage-toolbar{flex-direction:column;align-items:center;gap:14px}
+ html[data-responsive="polished"] .stage-toolbar>span{max-width:100%}
+ html[data-responsive="polished"] .figma-caption,html[data-responsive="polished"] .cover-caption,html[data-responsive="polished"] .thumb-caption{justify-content:center;flex-wrap:wrap}
+ html[data-responsive="polished"] .cover-caption{flex-direction:column;align-items:center;gap:6px}
+ html[data-responsive="polished"] .figma-preview>span{left:50%;right:auto;transform:translateX(-50%);white-space:nowrap}
+ html[data-responsive="polished"] .demo-link{display:flex;flex-direction:column;align-items:center;gap:10px}
+ html[data-responsive="polished"] .demo-link p{max-width:42ch;margin:0}
+ html[data-responsive="polished"] .demo-arrow{display:none}
+ html[data-responsive="polished"] .contact{display:block}
+ html[data-responsive="polished"] .contact-intro{margin-inline:auto}
+ html[data-responsive="polished"] .contact-links{align-items:center;justify-content:center}
+ html[data-responsive="polished"] footer{justify-content:center}
+ html[data-responsive="polished"] .hero-liquid .discipline-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+ html[data-hero-tone="amber"] .liquid-header.menu-open nav{background:#21130770;backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%)}
 }
 @media(max-width:380px){html[data-responsive="polished"] .hero-liquid.hero-process-copy h1{font-size:34px!important}}

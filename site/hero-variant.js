@@ -1,4 +1,4 @@
-import {initLiquidHero} from './hero-liquid.js?v=fc7d219a36eb';
+import {initLiquidHero} from './hero-liquid.js?v=c104c45d0592';
 
 // Approved for publication; the previous Hero remains available by query.
 const HERO_VARIANT='liquid';
@@ -33,10 +33,10 @@ if(variant==='legacy'){
  const first=hero.querySelector('.hero-title-line-a');first.innerHTML=first.textContent.trim().replace(/\.\s+/g,'.<br> ');
  if(new URLSearchParams(location.search).get('heroCopy')!=='previous'){
   hero.classList.add('hero-process-copy');
-  hero.querySelector('h1').innerHTML='<span class="hero-title-line hero-title-line-a">Сначала<br> разбираюсь,</span><span class="hero-title-line hero-title-line-b"> потом создаю.</span>';
+  hero.querySelector('h1').innerHTML=new URLSearchParams(location.search).get('heroCopy')==='process'?'<span class="hero-title-line hero-title-line-a">Сначала<br> разбираюсь,</span><span class="hero-title-line hero-title-line-b"> потом создаю.</span>':'<span class="hero-title-line hero-title-line-a">Александр.</span><span class="hero-title-line hero-title-line-b"> AI creator.</span>';
  }
  if(document.documentElement.dataset.responsive==='polished'&&hero.classList.contains('hero-process-copy')&&hero.classList.contains('hero-portrait-up')){
-  const mobile=matchMedia('(max-width:650px)'),composition=hero.querySelector('.liquid-composition'),note=hero.querySelector('.intro-note');
+  const mobile=matchMedia('(max-width:720px)'),composition=hero.querySelector('.liquid-composition'),note=hero.querySelector('.intro-note');
   const placePortrait=()=>{if(mobile.matches)note.after(portrait);else composition.append(portrait);};
   placePortrait();mobile.addEventListener('change',placePortrait);
  }
