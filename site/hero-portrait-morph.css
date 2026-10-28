@@ -1,0 +1,23 @@
+/* Replaces the rejected light rim. Only the photo silhouette changes. */
+.hero-liquid .liquid-portrait{border:0;background:transparent!important}
+.hero-liquid .portrait-shape{width:100%;height:100%;overflow:hidden;border:1px solid #ffe3a14d;border-radius:13% 15% 12% 16% / 14% 12% 17% 13%;animation:portrait-soft-shape 14s cubic-bezier(.45,0,.55,1) infinite}
+.hero-liquid .portrait-shape img{width:100%;height:100%;object-fit:cover;border-radius:0!important;transform:none;filter:none}
+@keyframes portrait-soft-shape{
+ 0%,100%{border-radius:13% 15% 12% 16% / 14% 12% 17% 13%}
+ 25%{border-radius:24% 11% 22% 14% / 13% 24% 12% 22%}
+ 50%{border-radius:15% 26% 12% 23% / 24% 12% 25% 13%}
+ 75%{border-radius:22% 13% 25% 11% / 15% 22% 13% 24%}
+}
+.hero-liquid:not([data-motion="running"]) .portrait-shape{animation-play-state:paused}
+.hero-liquid.portrait-static .portrait-shape{animation:none}
+.hero-portrait-up .portrait-note{left:0;right:0;top:auto;bottom:calc(100% + 24px);width:100%}
+.hero-portrait-up .portrait-note span{font-size:23px;line-height:1.05;white-space:normal;max-width:260px;transform:rotate(-5deg)}
+.hero-portrait-up .portrait-note svg{position:absolute;left:auto;right:16px;top:100%;width:40px;height:48px;margin:0;transform:rotate(-12deg)}
+@media(max-width:1250px) and (min-width:651px){.hero-portrait-up .portrait-note span{font-size:21px}.hero-portrait-up .portrait-note svg{right:6px}}
+@media(max-width:650px){
+ .hero-liquid .portrait-shape{animation-duration:18s}
+ .hero-portrait-up .portrait-note{left:auto;right:calc(100% + 14px);top:5px;bottom:auto;width:min(190px,calc(100vw - 146px))}
+ .hero-portrait-up .portrait-note span{font-size:21px;line-height:1.05}
+ .hero-portrait-up .portrait-note svg{left:auto;right:-30px;top:auto;bottom:-5px;width:40px;height:38px;transform:rotate(-75deg)}
+}
+@media(prefers-reduced-motion:reduce){.hero-liquid .portrait-shape{animation:none}}

@@ -1,4 +1,4 @@
-import {initLiquidHero} from './hero-liquid.js?v=1b732f86bf19';
+import {initLiquidHero} from './hero-liquid.js?v=47562b8f9b21';
 
 // Approved for publication; the previous Hero remains available by query.
 const HERO_VARIANT='liquid';
@@ -19,15 +19,13 @@ if(variant==='legacy'){
  const surface=document.createElement('div');surface.className='liquid-surface';surface.setAttribute('aria-hidden','true');
  surface.innerHTML='<canvas class="liquid-canvas"></canvas>';hero.prepend(surface);
  const portrait=document.createElement('figure');portrait.className='liquid-portrait';
- portrait.innerHTML='<img src="assets/hero-liquid-portrait.png" width="512" height="512" alt="Александр" fetchpriority="high" decoding="async">';
- if(new URLSearchParams(location.search).get('border')!=='off'){
-  const edge=document.createElement('span');edge.className='portrait-gold-edge';edge.setAttribute('aria-hidden','true');portrait.append(edge);
- }
+ portrait.innerHTML='<div class="portrait-shape"><img src="assets/hero-liquid-portrait.png" width="512" height="512" alt="Александр" fetchpriority="high" decoding="async"></div>';
+ if(new URLSearchParams(location.search).get('portraitMotion')==='off')hero.classList.add('portrait-static');
  document.querySelector('.hero-content').append(portrait);
  if(new URLSearchParams(location.search).get('heroLayout')!=='previous'){
   hero.classList.add('hero-portrait-up');
   const title=hero.querySelector('h1'),composition=document.createElement('div');composition.className='liquid-composition';title.before(composition);composition.append(title,portrait);
-  const caption=document.createElement('figcaption');caption.className='portrait-note';caption.innerHTML='<span>AI creator</span><svg viewBox="0 0 110 65" fill="none" aria-hidden="true"><path d="M94 7C78 7 84 29 63 35S33 33 14 55M14 55l3-15M14 55l17-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const caption=document.createElement('figcaption');caption.className='portrait-note';caption.innerHTML='<span>Сначала разбираюсь,<br>потом создаю.</span><svg viewBox="0 0 55 65" fill="none" aria-hidden="true"><path d="M12 5C3 22 35 16 28 36S43 44 36 60M36 60l-8-9M36 60l11-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   portrait.append(caption);
  }
  // Preserve the exact wording, with a three-line composition like the reference.
