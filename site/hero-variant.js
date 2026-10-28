@@ -1,4 +1,4 @@
-import {initLiquidHero} from './hero-liquid.js?v=c104c45d0592';
+import {initLiquidHero} from './hero-liquid.js?v=96ab6bb46bbf';
 
 // Approved for publication; the previous Hero remains available by query.
 const HERO_VARIANT='liquid';
@@ -20,7 +20,7 @@ if(variant==='legacy'){
  const surface=document.createElement('div');surface.className='liquid-surface';surface.setAttribute('aria-hidden','true');
  surface.innerHTML='<canvas class="liquid-canvas"></canvas>';hero.prepend(surface);
  const portrait=document.createElement('figure');portrait.className='liquid-portrait';
- portrait.innerHTML='<div class="portrait-shape"><img src="assets/hero-liquid-portrait.png" width="512" height="512" alt="Александр" fetchpriority="high" decoding="async"></div>';
+ portrait.innerHTML='<div class="portrait-shape"><img src="assets/hero-liquid-portrait.png" width="512" height="512" alt="Александр" fetchpriority="high" decoding="async"></div><svg class="portrait-author-mark" viewBox="0 0 28 32" fill="none" aria-hidden="true" focusable="false"><path d="M5 7L12 1M9 16L25 12M7 25L18 30" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
  if(new URLSearchParams(location.search).get('portraitMotion')==='off')hero.classList.add('portrait-static');
  document.querySelector('.hero-content').append(portrait);
  if(new URLSearchParams(location.search).get('heroLayout')!=='previous'){
@@ -33,7 +33,7 @@ if(variant==='legacy'){
  const first=hero.querySelector('.hero-title-line-a');first.innerHTML=first.textContent.trim().replace(/\.\s+/g,'.<br> ');
  if(new URLSearchParams(location.search).get('heroCopy')!=='previous'){
   hero.classList.add('hero-process-copy');
-  hero.querySelector('h1').innerHTML=new URLSearchParams(location.search).get('heroCopy')==='process'?'<span class="hero-title-line hero-title-line-a">Сначала<br> разбираюсь,</span><span class="hero-title-line hero-title-line-b"> потом создаю.</span>':'<span class="hero-title-line hero-title-line-a">Александр.</span><span class="hero-title-line hero-title-line-b"> AI creator.</span>';
+  hero.querySelector('h1').innerHTML=new URLSearchParams(location.search).get('heroCopy')==='process'?'<span class="hero-title-line hero-title-line-a">Сначала<br> разбираюсь,</span><span class="hero-title-line hero-title-line-b"> потом создаю.</span>':'<span class="hero-title-line hero-title-line-a"><span class="hero-name">Александр.<svg class="author-stroke" viewBox="0 0 360 16" fill="none" aria-hidden="true" focusable="false"><path d="M5 10C83 3 185 3 278 7S342 9 355 5M237 12C273 10 310 10 340 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></span><span class="hero-title-line hero-title-line-b"> AI creator.</span>';
  }
  if(document.documentElement.dataset.responsive==='polished'&&hero.classList.contains('hero-process-copy')&&hero.classList.contains('hero-portrait-up')){
   const mobile=matchMedia('(max-width:720px)'),composition=hero.querySelector('.liquid-composition'),note=hero.querySelector('.intro-note');
