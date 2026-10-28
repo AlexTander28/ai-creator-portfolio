@@ -1,9 +1,9 @@
-import './hero-variant.js?v=3a91c3d7bc45';
-import {groups,featuredUi,videos,demos,imageWorks,categoryLabels} from './data.js?v=3a91c3d7bc45';
-import {initRibbon} from './ribbon.js?v=3a91c3d7bc45';
-import {initHeroDirector} from './hero-director.js?v=3a91c3d7bc45';
-import './figma.js?v=3a91c3d7bc45';
-import './banners.js?v=3a91c3d7bc45';
+import './hero-variant.js?v=fc5d3c9827d6';
+import {groups,featuredUi,videos,demos,imageWorks,categoryLabels} from './data.js?v=fc5d3c9827d6';
+import {initRibbon} from './ribbon.js?v=fc5d3c9827d6';
+import {initHeroDirector} from './hero-director.js?v=fc5d3c9827d6';
+import './figma.js?v=fc5d3c9827d6';
+import './banners.js?v=fc5d3c9827d6';
 const $=selector=>document.querySelector(selector);
 // Temporarily disabled by user request. Keep the section and all assets for restoration.
 const videoSectionEnabled=false;

@@ -1,0 +1,21 @@
+@font-face{font-family:HeroHand;src:url('assets/hero-handwriting.ttf') format('truetype');font-style:normal;font-weight:400 700;font-display:swap}
+.hero-portrait-up .intro-line{grid-column:1/-1}
+.hero-portrait-up .liquid-composition{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:48px;align-items:start;position:relative}
+.hero-portrait-up .liquid-portrait{position:relative;grid-column:2;grid-row:1;align-self:start;margin:8px 0 0;overflow:visible}
+.hero-portrait-up .liquid-portrait img{border-radius:13px}
+.hero-portrait-up .portrait-note{position:absolute;left:calc(100% + 22px);top:22px;width:116px;color:#fff4d9;pointer-events:none}
+.hero-portrait-up .portrait-note span{display:block;font:500 25px/1.1 HeroHand,cursive;transform:rotate(-7deg);white-space:nowrap}
+.hero-portrait-up .portrait-note svg{display:block;width:100px;height:60px;margin:8px 0 0 -8px;transform:rotate(4deg)}
+html[data-hero-tone="purple"] .hero-portrait-up .portrait-note{color:#eee3ff}
+@media(min-width:1600px){.hero-portrait-up .liquid-composition{gap:60px}}
+@media(max-width:1050px) and (min-width:651px){.hero-portrait-up .liquid-composition{grid-template-columns:minmax(0,1fr) 210px;gap:40px}}
+@media(max-width:1250px) and (min-width:651px){.hero-portrait-up .portrait-note{left:20px;top:calc(100% + 12px);width:160px}.hero-portrait-up .portrait-note span{font-size:23px}.hero-portrait-up .portrait-note svg{position:absolute;width:65px;height:40px;left:100px;top:-12px;transform:rotate(145deg)}}
+@media(max-width:650px){
+ .hero-portrait-up .liquid-composition{display:block}
+ .hero-portrait-up .hero-content>.eyebrow{max-width:calc(100% - 104px)}
+ .hero-portrait-up .hero-title-line-a{max-width:calc(100% - 104px)!important}
+ .hero-portrait-up .liquid-portrait{position:absolute;right:0;top:3px;width:80px;align-self:auto;margin:0;transform:rotate(1deg)}
+ .hero-portrait-up .portrait-note{left:auto;right:0;top:-42px;width:86px}
+ .hero-portrait-up .portrait-note span{font-size:19px;transform:rotate(-6deg)}
+ .hero-portrait-up .portrait-note svg{position:absolute;left:-25px;top:8px;width:46px;height:30px;margin:0;transform:rotate(-65deg)}
+}

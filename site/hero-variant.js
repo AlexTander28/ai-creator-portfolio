@@ -1,4 +1,4 @@
-import {initLiquidHero} from './hero-liquid.js?v=3a91c3d7bc45';
+import {initLiquidHero} from './hero-liquid.js?v=fc5d3c9827d6';
 
 // Approved for publication; the previous Hero remains available by query.
 const HERO_VARIANT='liquid';
@@ -20,6 +20,12 @@ if(variant==='legacy'){
  const portrait=document.createElement('figure');portrait.className='liquid-portrait';
  portrait.innerHTML='<img src="assets/hero-liquid-portrait.png" width="512" height="512" alt="Александр" fetchpriority="high" decoding="async">';
  document.querySelector('.hero-content').append(portrait);
+ if(new URLSearchParams(location.search).get('heroLayout')!=='previous'){
+  hero.classList.add('hero-portrait-up');
+  const title=hero.querySelector('h1'),composition=document.createElement('div');composition.className='liquid-composition';title.before(composition);composition.append(title,portrait);
+  const caption=document.createElement('figcaption');caption.className='portrait-note';caption.innerHTML='<span>AI creator</span><svg viewBox="0 0 110 65" fill="none" aria-hidden="true"><path d="M94 7C78 7 84 29 63 35S33 33 14 55M14 55l3-15M14 55l17-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  portrait.append(caption);
+ }
  // Preserve the exact wording, with a three-line composition like the reference.
  const first=hero.querySelector('.hero-title-line-a');first.innerHTML=first.textContent.trim().replace(/\.\s+/g,'.<br> ');
  initLiquidHero(hero);
