@@ -1,4 +1,4 @@
-import {initLiquidHero} from './hero-liquid.js?v=47562b8f9b21';
+import {initLiquidHero} from './hero-liquid.js?v=b27f148eaf0b';
 
 // Approved for publication; the previous Hero remains available by query.
 const HERO_VARIANT='liquid';
@@ -8,6 +8,7 @@ const tone=new URLSearchParams(location.search).get('heroTone')==='purple'?'purp
 const hero=document.querySelector('.hero-intro');
 const media=document.querySelector('#hero-legacy-media');
 document.documentElement.dataset.heroVariant=variant;
+document.documentElement.dataset.responsive=new URLSearchParams(location.search).get('responsive')==='previous'?'previous':'polished';
 document.documentElement.dataset.heroTone=tone;
 document.documentElement.dataset.heroStage=new URLSearchParams(location.search).get('heroStage')==='previous'?'previous':'full';
 if(tone==='amber')document.querySelectorAll('.site-header a[href="#contact"],.contact-links a').forEach(a=>{a.textContent=a.textContent.replace(/[↗\uFE0F]/g,'').trim();});
@@ -33,6 +34,11 @@ if(variant==='legacy'){
  if(new URLSearchParams(location.search).get('heroCopy')!=='previous'){
   hero.classList.add('hero-process-copy');
   hero.querySelector('h1').innerHTML='<span class="hero-title-line hero-title-line-a">Сначала<br> разбираюсь,</span><span class="hero-title-line hero-title-line-b"> потом создаю.</span>';
+ }
+ if(document.documentElement.dataset.responsive==='polished'&&hero.classList.contains('hero-process-copy')&&hero.classList.contains('hero-portrait-up')){
+  const mobile=matchMedia('(max-width:650px)'),composition=hero.querySelector('.liquid-composition'),note=hero.querySelector('.intro-note');
+  const placePortrait=()=>{if(mobile.matches)note.after(portrait);else composition.append(portrait);};
+  placePortrait();mobile.addEventListener('change',placePortrait);
  }
  initLiquidHero(hero);
 }

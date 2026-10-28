@@ -1,0 +1,31 @@
+/* Existing identity, reflowed reading order. ?responsive=previous disables this pass. */
+html[data-responsive="polished"] .section-heading>p{line-height:1.6}
+@media(max-width:720px){
+ html[data-responsive="polished"] .figma-featured{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:650px){
+ html[data-responsive="polished"] .hero-liquid .hero-content{padding-top:116px}
+ html[data-responsive="polished"] .hero-liquid.hero-process-copy .intro-line{display:flex;flex-direction:column;align-items:stretch;gap:0;padding-bottom:30px}
+ html[data-responsive="polished"] .hero-liquid.hero-process-copy .liquid-composition{display:contents!important}
+ html[data-responsive="polished"] .hero-liquid.hero-process-copy h1{order:0;font-size:clamp(35px,9.2vw,48px)!important;line-height:1.12}
+ html[data-responsive="polished"] .hero-liquid .intro-note{order:1;margin-top:22px;max-width:none;font-size:16px;line-height:1.55}
+ html[data-responsive="polished"] .hero-liquid .intro-note>p{line-height:1.55}
+ html[data-responsive="polished"] .hero-liquid .intro-note .muted{font-size:14px;line-height:1.6;margin:16px 0 22px}
+ html[data-responsive="polished"] .hero-liquid .intro-note .arrow-link{min-height:50px;font-size:14px;padding-inline:22px}
+ html[data-responsive="polished"] .hero-liquid.hero-process-copy .liquid-portrait{position:relative;inset:auto;order:2;align-self:center;display:flex;flex-direction:column;gap:12px;width:clamp(180px,52vw,240px);height:auto;aspect-ratio:auto;margin:44px auto 8px;transform:none}
+ html[data-responsive="polished"] .hero-liquid .portrait-shape{order:1;height:auto;aspect-ratio:1;width:100%;flex:none}
+ html[data-responsive="polished"] .hero-liquid .portrait-note{position:relative;inset:auto;order:0;width:100%;max-width:none;flex:none}
+ html[data-responsive="polished"] .hero-liquid .portrait-note span{max-width:none;font-size:23px;line-height:1.15;text-align:center;transform:rotate(-3deg)}
+ html[data-responsive="polished"] .hero-liquid .portrait-note svg{position:absolute;left:auto;right:-8px;top:70%;bottom:auto;width:34px;height:42px;transform:rotate(-20deg)}
+ html[data-responsive="polished"] .hero-liquid .hero-content>.eyebrow{max-width:100%;font-size:12px;line-height:1.5}
+ html[data-responsive="polished"] .hero-liquid .discipline-nav{gap:4px 12px;padding-top:16px;padding-bottom:20px}
+ html[data-responsive="polished"] .hero-liquid .discipline-nav a{font-size:12px;min-height:44px}
+ html[data-responsive="polished"] .section-heading>p{font-size:15px;line-height:1.6;max-width:42ch}
+ html[data-responsive="polished"] .figma-note,html[data-responsive="polished"] .demo-note{font-size:13px;line-height:1.6}
+ html[data-responsive="polished"] .demo-link p{font-size:14px;line-height:1.5}
+ html[data-responsive="polished"] .demo-link h3{font-size:21px;line-height:1.25}
+ html[data-responsive="polished"] .contact-intro{font-size:16px;line-height:1.6}
+ html[data-responsive="polished"] .figma-context{font-size:13px;line-height:1.55}
+ html[data-responsive="polished"] .sites-section .site-showcase{height:clamp(290px,47svh,380px)}
+}
+@media(max-width:380px){html[data-responsive="polished"] .hero-liquid.hero-process-copy h1{font-size:34px!important}}

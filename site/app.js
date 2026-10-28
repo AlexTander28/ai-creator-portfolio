@@ -1,9 +1,9 @@
-import './hero-variant.js?v=47562b8f9b21';
-import {groups,featuredUi,videos,demos,imageWorks,categoryLabels} from './data.js?v=47562b8f9b21';
-import {initRibbon} from './ribbon.js?v=47562b8f9b21';
-import {initHeroDirector} from './hero-director.js?v=47562b8f9b21';
-import './figma.js?v=47562b8f9b21';
-import './banners.js?v=47562b8f9b21';
+import './hero-variant.js?v=b27f148eaf0b';
+import {groups,featuredUi,videos,demos,imageWorks,categoryLabels} from './data.js?v=b27f148eaf0b';
+import {initRibbon} from './ribbon.js?v=b27f148eaf0b';
+import {initHeroDirector} from './hero-director.js?v=b27f148eaf0b';
+import './figma.js?v=b27f148eaf0b';
+import './banners.js?v=b27f148eaf0b';
 const $=selector=>document.querySelector(selector);
 // Temporarily disabled by user request. Keep the section and all assets for restoration.
 const videoSectionEnabled=false;
@@ -199,6 +199,12 @@ uiStage.addEventListener('focusout',()=>{uiTime=0;wake();});
 document.querySelectorAll('dialog').forEach(viewer=>viewer.addEventListener('close',()=>{uiTime=0;wake();}));
 $('.ui-deck').innerHTML=groups.ui.map(item=>'<button class="ui-card" type="button" data-showcase-open="'+item.id+'" aria-label="Открыть: '+item.title+'">'+image(item)+'<span>'+item.title+' / UI-концепт ↗</span></button>').join('');
 const cards=[...document.querySelectorAll('.ui-card')];
+// Begin decoding before the deck enters the viewport, not on the first flip.
+const uiImageLoader=new IntersectionObserver(entries=>{
+ if(!entries.some(entry=>entry.isIntersecting))return;
+ cards.forEach(card=>{card.querySelector('img').loading='eager';});uiImageLoader.disconnect();
+},{rootMargin:'500px'});
+uiImageLoader.observe(uiStage);
 const uiRotations=[0,5,-6,8];
 function uiRotation(relative){
  const low=Math.floor(relative),high=Math.ceil(relative),mix=relative-low,from=uiRotations[Math.max(0,Math.min(3,low))]||0,to=uiRotations[Math.max(0,Math.min(3,high))]||0;
