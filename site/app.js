@@ -1,8 +1,9 @@
-import {groups,featuredUi,videos,demos,imageWorks,categoryLabels} from './data.js?v=666634130eba';
-import {initRibbon} from './ribbon.js?v=666634130eba';
-import {initHeroDirector} from './hero-director.js?v=666634130eba';
-import './figma.js?v=666634130eba';
-import './banners.js?v=666634130eba';
+import './hero-variant.js?v=d0544114e2f8';
+import {groups,featuredUi,videos,demos,imageWorks,categoryLabels} from './data.js?v=d0544114e2f8';
+import {initRibbon} from './ribbon.js?v=d0544114e2f8';
+import {initHeroDirector} from './hero-director.js?v=d0544114e2f8';
+import './figma.js?v=d0544114e2f8';
+import './banners.js?v=d0544114e2f8';
 const $=selector=>document.querySelector(selector);
 // Temporarily disabled by user request. Keep the section and all assets for restoration.
 const videoSectionEnabled=false;
@@ -301,9 +302,9 @@ heroVideo?.addEventListener('timeupdate',syncHeroPointing);
 heroVideo?.addEventListener('seeking',syncHeroPointing);
 heroVideo?.addEventListener('pause',syncHeroPointing);
 heroVideo?.addEventListener('play',syncHeroPointing);
-hero?.addEventListener('pointermove',event=>{if(paused||reduced.matches||heroDirector?.isManual())return;const rect=hero.getBoundingClientRect(),amount=(event.clientX-rect.left)/rect.width-.5;hero.style.setProperty('--hero-shift-a',(amount*18).toFixed(2)+'px');hero.style.setProperty('--hero-shift-b',(-amount*14).toFixed(2)+'px');});
+hero?.addEventListener('pointermove',event=>{if(!heroVideo||paused||reduced.matches||heroDirector?.isManual())return;const rect=hero.getBoundingClientRect(),amount=(event.clientX-rect.left)/rect.width-.5;hero.style.setProperty('--hero-shift-a',(amount*18).toFixed(2)+'px');hero.style.setProperty('--hero-shift-b',(-amount*14).toFixed(2)+'px');});
 hero?.addEventListener('pointerleave',()=>{hero.style.setProperty('--hero-shift-a','0px');hero.style.setProperty('--hero-shift-b','0px');});
-heroDirector=initHeroDirector(hero,heroVideo,{isStopped:()=>paused||reduced.matches||document.hidden||!!document.querySelector('dialog[open]')});
+if(heroVideo)heroDirector=initHeroDirector(hero,heroVideo,{isStopped:()=>paused||reduced.matches||document.hidden||!!document.querySelector('dialog[open]')});
 syncPause();
 function wake(){if(!animationFrame){previous=0;animationFrame=requestAnimationFrame(frame);}}
 function frame(now){
