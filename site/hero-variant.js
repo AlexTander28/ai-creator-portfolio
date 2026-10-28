@@ -1,4 +1,4 @@
-import {initLiquidHero} from './hero-liquid.js?v=b27f148eaf0b';
+import {initLiquidHero} from './hero-liquid.js?v=fc7d219a36eb';
 
 // Approved for publication; the previous Hero remains available by query.
 const HERO_VARIANT='liquid';
