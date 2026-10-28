@@ -1,0 +1,11 @@
+/* Liquid gold lives only in the 2px perimeter, never over the photograph. */
+.hero-liquid .liquid-portrait{position:relative}
+.hero-liquid .portrait-gold-edge{position:absolute;inset:-2px;padding:2px;border-radius:16px;overflow:hidden;pointer-events:none;z-index:1;
+ -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.portrait-gold-edge::before,.portrait-gold-edge::after{content:"";position:absolute;inset:-80%;background:conic-gradient(from 25deg,#a6600d,#f7bb46 15%,#fff0b7 24%,#c87813 39%,#e8a132 53%,#fff3c4 67%,#ffcd62 83%,#a6600d);animation:portrait-gold-flow 12s linear infinite;transform-origin:center}
+.portrait-gold-edge::after{background:conic-gradient(from 150deg,transparent 0 16%,#ffe4a2 25%,transparent 36% 59%,#ffbb46 70%,#fff3c4 77%,transparent 89%);opacity:.45;animation:portrait-gold-flow 14s linear infinite reverse;transition:opacity .35s ease}
+@keyframes portrait-gold-flow{to{transform:rotate(360deg)}}
+@media(hover:hover) and (pointer:fine){.liquid-portrait:hover .portrait-gold-edge::after{opacity:.68}}
+.hero-liquid:not([data-motion="running"]) .portrait-gold-edge::before,.hero-liquid:not([data-motion="running"]) .portrait-gold-edge::after{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce),(hover:none),(pointer:coarse){.portrait-gold-edge::before,.portrait-gold-edge::after{animation:none!important;transition:none!important}.portrait-gold-edge::after{opacity:.35}}
+@supports not (mask-composite:exclude){.hero-liquid .portrait-gold-edge{display:none}}

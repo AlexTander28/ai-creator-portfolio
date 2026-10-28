@@ -1,4 +1,4 @@
-import {initLiquidHero} from './hero-liquid.js?v=1fe0f1f9080d';
+import {initLiquidHero} from './hero-liquid.js?v=1b732f86bf19';
 
 // Approved for publication; the previous Hero remains available by query.
 const HERO_VARIANT='liquid';
@@ -20,6 +20,9 @@ if(variant==='legacy'){
  surface.innerHTML='<canvas class="liquid-canvas"></canvas>';hero.prepend(surface);
  const portrait=document.createElement('figure');portrait.className='liquid-portrait';
  portrait.innerHTML='<img src="assets/hero-liquid-portrait.png" width="512" height="512" alt="Александр" fetchpriority="high" decoding="async">';
+ if(new URLSearchParams(location.search).get('border')!=='off'){
+  const edge=document.createElement('span');edge.className='portrait-gold-edge';edge.setAttribute('aria-hidden','true');portrait.append(edge);
+ }
  document.querySelector('.hero-content').append(portrait);
  if(new URLSearchParams(location.search).get('heroLayout')!=='previous'){
   hero.classList.add('hero-portrait-up');
