@@ -1,4 +1,4 @@
-import {initLiquidHero} from './hero-liquid.js?v=9c623e24ccee';
+import {initLiquidHero} from './hero-liquid.js?v=1fe0f1f9080d';
 
 // Approved for publication; the previous Hero remains available by query.
 const HERO_VARIANT='liquid';
@@ -29,6 +29,10 @@ if(variant==='legacy'){
  }
  // Preserve the exact wording, with a three-line composition like the reference.
  const first=hero.querySelector('.hero-title-line-a');first.innerHTML=first.textContent.trim().replace(/\.\s+/g,'.<br> ');
+ if(new URLSearchParams(location.search).get('heroCopy')!=='previous'){
+  hero.classList.add('hero-process-copy');
+  hero.querySelector('h1').innerHTML='<span class="hero-title-line hero-title-line-a">Сначала<br> разбираюсь,</span><span class="hero-title-line hero-title-line-b"> потом создаю.</span>';
+ }
  initLiquidHero(hero);
 }
 media.remove();

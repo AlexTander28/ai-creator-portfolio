@@ -1,0 +1,8 @@
+/* Exact user wording; allow the longer phrase to breathe at each viewport. */
+.hero-liquid.hero-process-copy h1{font-size:clamp(46px,5.2vw,80px)!important;line-height:1.06;letter-spacing:-.035em}
+@media(max-width:650px){
+ .hero-liquid.hero-process-copy .liquid-composition{display:flex!important;flex-direction:column;align-items:stretch;gap:0}
+ .hero-liquid.hero-process-copy .liquid-portrait{position:relative;top:auto;right:auto;order:-1;align-self:flex-end;width:80px;margin:10px 0 20px}
+ .hero-liquid.hero-process-copy .hero-title-line-a{max-width:none!important}
+ .hero-liquid.hero-process-copy h1{font-size:clamp(34px,9.2vw,48px)!important;line-height:1.1;letter-spacing:-.035em}
+}
